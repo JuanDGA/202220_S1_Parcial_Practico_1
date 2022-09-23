@@ -32,6 +32,8 @@ import javax.persistence.MappedSuperclass;
 import lombok.Data;
 import uk.co.jemos.podam.common.PodamExclude;
 
+import java.util.Objects;
+
 /**
  * Entidad genérica de la que heredan todas las entidades. Contiene la
  * referencia al atributo id
@@ -42,7 +44,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Data
 @MappedSuperclass
 public abstract class BaseEntity {
-
 	@PodamExclude
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
