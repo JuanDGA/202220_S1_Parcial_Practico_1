@@ -49,6 +49,13 @@ public class HotelServiceTest {
     HotelEntity createdHotel = hotelService.createHotel(hotel);
 
     assertEquals(createdHotel, hotel);
+  }
+
+  @Test
+  public void testCreationHotelExceptions() {
+    HotelEntity hotel = factory.manufacturePojo(HotelEntity.class);
+
+    testEntityManager.persist(hotel);
 
     IllegalOperationException duplicatedNameException =
         assertThrows(IllegalOperationException.class, () -> hotelService.createHotel(hotel));

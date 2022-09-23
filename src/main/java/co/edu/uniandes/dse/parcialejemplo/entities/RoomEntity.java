@@ -6,7 +6,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -20,4 +20,13 @@ public class RoomEntity extends BaseEntity {
   @PodamExclude
   @ManyToOne
   private HotelEntity hotel;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof RoomEntity)) return false;
+    if (!super.equals(o)) return false;
+    RoomEntity room = (RoomEntity) o;
+    return getNumber() == room.getNumber() && getCapacity() == room.getCapacity() && getBeds() == room.getBeds() && getBathrooms() == room.getBathrooms() && Objects.equals(getHotel(), room.getHotel());
+  }
 }

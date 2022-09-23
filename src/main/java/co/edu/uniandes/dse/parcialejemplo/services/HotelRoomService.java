@@ -26,7 +26,7 @@ public class HotelRoomService {
     Optional<HotelEntity> optionalHotel = hotelRepository.findById(hotelId);
 
     if (optionalHotel.isEmpty())
-      throw new EntityNotFoundException("Hotel not found.");
+      throw new EntityNotFoundException("Hotel not found");
 
     Optional<RoomEntity> optionalRoom = roomRepository.findById(roomId);
 

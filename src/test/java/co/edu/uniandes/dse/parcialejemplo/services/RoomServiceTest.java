@@ -41,7 +41,7 @@ public class RoomServiceTest {
   }
 
   @Test
-  public void testCreateHotel() throws IllegalOperationException {
+  public void testCreateRoom() throws IllegalOperationException {
     RoomEntity room = factory.manufacturePojo(RoomEntity.class);
 
     room.setNumber(3);
@@ -50,8 +50,13 @@ public class RoomServiceTest {
     RoomEntity createdRoom = roomService.createRoom(room);
 
     assertEquals(createdRoom, room);
+  }
 
+  @Test
+  public void testCreateRoomExceptions() {
+    RoomEntity room = factory.manufacturePojo(RoomEntity.class);
     room.setNumber(5);
+    room.setBeds(3);
 
     assertThrows(IllegalOperationException.class, () -> roomService.createRoom(room));
   }
